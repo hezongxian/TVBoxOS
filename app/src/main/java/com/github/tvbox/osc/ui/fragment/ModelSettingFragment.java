@@ -119,19 +119,19 @@ public class ModelSettingFragment extends BaseLazyFragment {
     @Override
     protected void init() {
         tvFastSearchText = findViewById(R.id.showFastSearchText);
-        tvFastSearchText.setText(Hawk.get(HawkConfig.FAST_SEARCH_MODE, true) ? "开启" : "关闭");
+        tvFastSearchText.setText(Hawk.get(HawkConfig.FAST_SEARCH_MODE, true) ? "寮€鍚? : "鍏抽棴");
         tvm3u8AdText = findViewById(R.id.m3u8AdText);
-        tvm3u8AdText.setText(Hawk.get(HawkConfig.M3U8_PURIFY, false) ? "开启" : "关闭");
+        tvm3u8AdText.setText(Hawk.get(HawkConfig.M3U8_PURIFY, false) ? "寮€鍚? : "鍏抽棴");
         tvDanmuOpenText = findViewById(R.id.danmuOpenText);
-        tvDanmuOpenText.setText(DanmuHelper.isOpen() ? "开启" : "关闭");
+        tvDanmuOpenText.setText(DanmuHelper.isOpen() ? "寮€鍚? : "鍏抽棴");
         tvDanmuApiText = findViewById(R.id.danmuApiText);
         refreshDanmuApiText();
         tvAutoSwitchLineText = findViewById(R.id.autoSwitchLineText);
-        tvAutoSwitchLineText.setText(Hawk.get(HawkConfig.AUTO_SWITCH_LINE, true) ? "开启" : "关闭");
+        tvAutoSwitchLineText.setText(Hawk.get(HawkConfig.AUTO_SWITCH_LINE, true) ? "寮€鍚? : "鍏抽棴");
         tvRecStyleText = findViewById(R.id.showRecStyleText);
-        tvRecStyleText.setText(Hawk.get(HawkConfig.HOME_REC_STYLE, false) ? "是" : "否");
+        tvRecStyleText.setText(Hawk.get(HawkConfig.HOME_REC_STYLE, false) ? "鏄? : "鍚?);
         tvShowPreviewText = findViewById(R.id.showPreviewText);
-        tvShowPreviewText.setText(Hawk.get(HawkConfig.SHOW_PREVIEW, true) ? "开启" : "关闭");
+        tvShowPreviewText.setText(Hawk.get(HawkConfig.SHOW_PREVIEW, true) ? "寮€鍚? : "鍏抽棴");
         tvDebugOpen = findViewById(R.id.tvDebugOpen);
         tvParseWebView = findViewById(R.id.tvParseWebView);
         tvMediaCodec = findViewById(R.id.tvMediaCodec);
@@ -149,10 +149,11 @@ public class ModelSettingFragment extends BaseLazyFragment {
         tvHistoryNum = findViewById(R.id.tvHistoryNum);
         tvSearchView = findViewById(R.id.tvSearchView);
         tvIjkCachePlay = findViewById(R.id.tvIjkCachePlay);
-        tvMediaCodec.setText(Hawk.get(HawkConfig.IJK_CODEC, "硬解码"));
-        tvDebugOpen.setText(Hawk.get(HawkConfig.DEBUG_OPEN, false) ? "已打开" : "已关闭");
-        tvParseWebView.setText(Hawk.get(HawkConfig.PARSE_WEBVIEW, true) ? "系统自带" : "XWalkView");
-        tvApi.setText(Hawk.get(HawkConfig.API_URL, ""));
+        tvMediaCodec.setText(Hawk.get(HawkConfig.IJK_CODEC, "纭В鐮?));
+        tvDebugOpen.setText(Hawk.get(HawkConfig.DEBUG_OPEN, false) ? "宸叉墦寮€" : "宸插叧闂?);
+        tvParseWebView.setText(Hawk.get(HawkConfig.PARSE_WEBVIEW, true) ? "绯荤粺鑷甫" : "XWalkView");
+        String defaultApi = "https://api.starlink.fan/api/c4kHF8.json";
+        tvApi.setText(Hawk.get(HawkConfig.API_URL, defaultApi));
         refreshApiLineText();
 
         tvDns.setText(OkGoHelper.dnsHttpsList.get(Hawk.get(HawkConfig.DOH_URL, 0)));
@@ -163,15 +164,15 @@ public class ModelSettingFragment extends BaseLazyFragment {
         tvScale.setText(PlayerHelper.getScaleName(Hawk.get(HawkConfig.PLAY_SCALE, 0)));
         tvPlay.setText(PlayerHelper.getPlayerName(Hawk.get(HawkConfig.PLAY_TYPE, 0)));
         tvRender.setText(PlayerHelper.getRenderName(Hawk.get(HawkConfig.PLAY_RENDER, 0)));
-        tvIjkCachePlay.setText(Hawk.get(HawkConfig.IJK_CACHE_PLAY, false) ? "开启" : "关闭");
+        tvIjkCachePlay.setText(Hawk.get(HawkConfig.IJK_CACHE_PLAY, false) ? "寮€鍚? : "鍏抽棴");
         tvHomeDefaultShow = findViewById(R.id.tvHomeText);
-        tvHomeDefaultShow.setText(Hawk.get(HawkConfig.DEFAULT_LOAD_LIVE, false) ? "直播" : "点播");
+        tvHomeDefaultShow.setText(Hawk.get(HawkConfig.DEFAULT_LOAD_LIVE, false) ? "鐩存挱" : "鐐规挱");
         findViewById(R.id.llDebug).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FastClickCheckUtil.check(v);
                 Hawk.put(HawkConfig.DEBUG_OPEN, !Hawk.get(HawkConfig.DEBUG_OPEN, false));
-                tvDebugOpen.setText(Hawk.get(HawkConfig.DEBUG_OPEN, false) ? "已打开" : "已关闭");
+                tvDebugOpen.setText(Hawk.get(HawkConfig.DEBUG_OPEN, false) ? "宸叉墦寮€" : "宸插叧闂?);
             }
         });
         findViewById(R.id.llParseWebVew).setOnClickListener(new View.OnClickListener() {
@@ -180,9 +181,9 @@ public class ModelSettingFragment extends BaseLazyFragment {
                 FastClickCheckUtil.check(v);
                 boolean useSystem = !Hawk.get(HawkConfig.PARSE_WEBVIEW, true);
                 Hawk.put(HawkConfig.PARSE_WEBVIEW, useSystem);
-                tvParseWebView.setText(Hawk.get(HawkConfig.PARSE_WEBVIEW, true) ? "系统自带" : "XWalkView");
+                tvParseWebView.setText(Hawk.get(HawkConfig.PARSE_WEBVIEW, true) ? "绯荤粺鑷甫" : "XWalkView");
                 if (!useSystem) {
-                    Toast.makeText(mContext, "注意: XWalkView只适用于部分低Android版本，Android5.0以上推荐使用系统自带", Toast.LENGTH_LONG).show();
+                    Toast.makeText(mContext, "娉ㄦ剰: XWalkView鍙€傜敤浜庨儴鍒嗕綆Android鐗堟湰锛孉ndroid5.0浠ヤ笂鎺ㄨ崘浣跨敤绯荤粺鑷甫", Toast.LENGTH_LONG).show();
                     XWalkInitDialog dialog = new XWalkInitDialog(mContext);
                     dialog.setOnListener(new XWalkInitDialog.OnListener() {
                         @Override
@@ -249,7 +250,7 @@ public class ModelSettingFragment extends BaseLazyFragment {
                 List<SourceBean> sites = ApiConfig.get().getSwitchSourceBeanList();
                 if (sites.size() > 0) {
                     SelectDialog<SourceBean> dialog = new SelectDialog<>(mActivity);
-                    dialog.setTip("请选择首页数据源");
+                    dialog.setTip("璇烽€夋嫨棣栭〉鏁版嵁婧?);
                     int select = sites.indexOf(ApiConfig.get().getHomeSourceBean());
                     if (select<0) select = 0;
                     dialog.setAdapter(new SelectDialogAdapter.SelectDialogInterface<SourceBean>() {
@@ -292,7 +293,7 @@ public class ModelSettingFragment extends BaseLazyFragment {
                 int dohUrl = Hawk.get(HawkConfig.DOH_URL, 0);
 
                 SelectDialog<String> dialog = new SelectDialog<>(mActivity);
-                dialog.setTip("请选择安全DNS");
+                dialog.setTip("璇烽€夋嫨瀹夊叏DNS");
                 dialog.setAdapter(new SelectDialogAdapter.SelectDialogInterface<String>() {
                     @Override
                     public void click(String value, int pos) {
@@ -372,7 +373,7 @@ public class ModelSettingFragment extends BaseLazyFragment {
                 if (history.contains(current))
                     idx = history.indexOf(current);
                 ApiHistoryDialog dialog = new ApiHistoryDialog(mActivity);
-                dialog.setTip("历史配置列表");
+                dialog.setTip("鍘嗗彶閰嶇疆鍒楄〃");
                 dialog.setAdapter(new ApiHistoryDialogAdapter.SelectDialogInterface() {
                     @Override
                     public void click(String value) {
@@ -405,7 +406,7 @@ public class ModelSettingFragment extends BaseLazyFragment {
             public void onClick(View v) {
                 ArrayList<String> apiLines = Hawk.get(HawkConfig.API_LINE_LIST, new ArrayList<String>());
                 if (apiLines.isEmpty()) {
-                    Toast.makeText(mContext, "线路列表为空", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "绾胯矾鍒楄〃涓虹┖", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 String current = Hawk.get(HawkConfig.API_URL, "");
@@ -417,7 +418,7 @@ public class ModelSettingFragment extends BaseLazyFragment {
                     }
                 }
                 SelectDialog<String> dialog = new SelectDialog<>(mActivity);
-                dialog.setTip("线路选择");
+                dialog.setTip("绾胯矾閫夋嫨");
                 dialog.setAdapter(new SelectDialogAdapter.SelectDialogInterface<String>() {
                     @Override
                     public void click(String value, int pos) {
@@ -456,7 +457,7 @@ public class ModelSettingFragment extends BaseLazyFragment {
                 FastClickCheckUtil.check(v);
 
                 int defaultPos = 0;
-                String ijkSel = Hawk.get(HawkConfig.IJK_CODEC, "硬解码");
+                String ijkSel = Hawk.get(HawkConfig.IJK_CODEC, "纭В鐮?);
                 for (int j = 0; j < ijkCodes.size(); j++) {
                     if (ijkSel.equals(ijkCodes.get(j).getName())) {
                         defaultPos = j;
@@ -465,7 +466,7 @@ public class ModelSettingFragment extends BaseLazyFragment {
                 }
 
                 SelectDialog<IJKCode> dialog = new SelectDialog<>(mActivity);
-                dialog.setTip("请选择IJK解码");
+                dialog.setTip("璇烽€夋嫨IJK瑙ｇ爜");
                 dialog.setAdapter(new SelectDialogAdapter.SelectDialogInterface<IJKCode>() {
                     @Override
                     public void click(IJKCode value, int pos) {
@@ -504,7 +505,7 @@ public class ModelSettingFragment extends BaseLazyFragment {
                 players.add(4);
                 players.add(5);
                 SelectDialog<Integer> dialog = new SelectDialog<>(mActivity);
-                dialog.setTip("请选择默认画面缩放");
+                dialog.setTip("璇烽€夋嫨榛樿鐢婚潰缂╂斁");
                 dialog.setAdapter(new SelectDialogAdapter.SelectDialogInterface<Integer>() {
                     @Override
                     public void click(Integer value, int pos) {
@@ -545,7 +546,7 @@ public class ModelSettingFragment extends BaseLazyFragment {
                     }
                 }
                 SelectDialog<Integer> dialog = new SelectDialog<>(mActivity);
-                dialog.setTip("请选择默认播放器");
+                dialog.setTip("璇烽€夋嫨榛樿鎾斁鍣?);
                 dialog.setAdapter(new SelectDialogAdapter.SelectDialogInterface<Integer>() {
                     @Override
                     public void click(Integer value, int pos) {
@@ -583,7 +584,7 @@ public class ModelSettingFragment extends BaseLazyFragment {
                 renders.add(0);
                 renders.add(1);
                 SelectDialog<Integer> dialog = new SelectDialog<>(mActivity);
-                dialog.setTip("请选择默认渲染方式");
+                dialog.setTip("璇烽€夋嫨榛樿娓叉煋鏂瑰紡");
                 dialog.setAdapter(new SelectDialogAdapter.SelectDialogInterface<Integer>() {
                     @Override
                     public void click(Integer value, int pos) {
@@ -620,7 +621,7 @@ public class ModelSettingFragment extends BaseLazyFragment {
                 types.add(1);
                 types.add(2);
                 SelectDialog<Integer> dialog = new SelectDialog<>(mActivity);
-                dialog.setTip("请选择首页列表数据");
+                dialog.setTip("璇烽€夋嫨棣栭〉鍒楄〃鏁版嵁");
                 dialog.setAdapter(new SelectDialogAdapter.SelectDialogInterface<Integer>() {
                     @Override
                     public void click(Integer value, int pos) {
@@ -655,7 +656,7 @@ public class ModelSettingFragment extends BaseLazyFragment {
                 types.add(0);
                 types.add(1);
                 SelectDialog<Integer> dialog = new SelectDialog<>(mActivity);
-                dialog.setTip("请选择搜索视图");
+                dialog.setTip("璇烽€夋嫨鎼滅储瑙嗗浘");
                 dialog.setAdapter(new SelectDialogAdapter.SelectDialogInterface<Integer>() {
                     @Override
                     public void click(Integer value, int pos) {
@@ -693,7 +694,7 @@ public class ModelSettingFragment extends BaseLazyFragment {
             public void onClick(View v) {
                 FastClickCheckUtil.check(v);
                 Hawk.put(HawkConfig.SHOW_PREVIEW, !Hawk.get(HawkConfig.SHOW_PREVIEW, true));
-                tvShowPreviewText.setText(Hawk.get(HawkConfig.SHOW_PREVIEW, true) ? "开启" : "关闭");
+                tvShowPreviewText.setText(Hawk.get(HawkConfig.SHOW_PREVIEW, true) ? "寮€鍚? : "鍏抽棴");
             }
         });
         findViewById(R.id.llHistoryNum).setOnClickListener(new View.OnClickListener() {
@@ -706,7 +707,7 @@ public class ModelSettingFragment extends BaseLazyFragment {
                 types.add(1);
                 types.add(2);
                 SelectDialog<Integer> dialog = new SelectDialog<>(mActivity);
-                dialog.setTip("保留历史记录数量");
+                dialog.setTip("淇濈暀鍘嗗彶璁板綍鏁伴噺");
                 dialog.setAdapter(new SelectDialogAdapter.SelectDialogInterface<Integer>() {
                     @Override
                     public void click(Integer value, int pos) {
@@ -737,7 +738,7 @@ public class ModelSettingFragment extends BaseLazyFragment {
             public void onClick(View v) {
                 FastClickCheckUtil.check(v);
                 Hawk.put(HawkConfig.FAST_SEARCH_MODE, !Hawk.get(HawkConfig.FAST_SEARCH_MODE, true));
-                tvFastSearchText.setText(Hawk.get(HawkConfig.FAST_SEARCH_MODE, true) ? "开启" : "关闭");
+                tvFastSearchText.setText(Hawk.get(HawkConfig.FAST_SEARCH_MODE, true) ? "寮€鍚? : "鍏抽棴");
             }
         });
         findViewById(R.id.m3u8Ad).setOnClickListener(new View.OnClickListener() {
@@ -746,7 +747,7 @@ public class ModelSettingFragment extends BaseLazyFragment {
                 FastClickCheckUtil.check(v);
                 boolean is_purify=Hawk.get(HawkConfig.M3U8_PURIFY, false);
                 Hawk.put(HawkConfig.M3U8_PURIFY, !is_purify);
-                tvm3u8AdText.setText(!is_purify ? "开启" : "关闭");
+                tvm3u8AdText.setText(!is_purify ? "寮€鍚? : "鍏抽棴");
             }
         });
         findViewById(R.id.danmuOpen).setOnClickListener(new View.OnClickListener() {
@@ -755,7 +756,7 @@ public class ModelSettingFragment extends BaseLazyFragment {
                 FastClickCheckUtil.check(v);
                 boolean open = !DanmuHelper.isOpen();
                 DanmuHelper.setOpen(open);
-                tvDanmuOpenText.setText(open ? "开启" : "关闭");
+                tvDanmuOpenText.setText(open ? "寮€鍚? : "鍏抽棴");
             }
         });
         findViewById(R.id.danmuApi).setOnClickListener(new View.OnClickListener() {
@@ -778,7 +779,7 @@ public class ModelSettingFragment extends BaseLazyFragment {
                 FastClickCheckUtil.check(v);
                 boolean enable = !Hawk.get(HawkConfig.AUTO_SWITCH_LINE, true);
                 Hawk.put(HawkConfig.AUTO_SWITCH_LINE, enable);
-                tvAutoSwitchLineText.setText(enable ? "开启" : "关闭");
+                tvAutoSwitchLineText.setText(enable ? "寮€鍚? : "鍏抽棴");
             }
         });
         findViewById(R.id.llHomeRecStyle).setOnClickListener(new View.OnClickListener() {
@@ -786,7 +787,7 @@ public class ModelSettingFragment extends BaseLazyFragment {
             public void onClick(View v) {
                 FastClickCheckUtil.check(v);
                 Hawk.put(HawkConfig.HOME_REC_STYLE, !Hawk.get(HawkConfig.HOME_REC_STYLE, false));
-                tvRecStyleText.setText(Hawk.get(HawkConfig.HOME_REC_STYLE, false) ? "是" : "否");
+                tvRecStyleText.setText(Hawk.get(HawkConfig.HOME_REC_STYLE, false) ? "鏄? : "鍚?);
             }
         });
 
@@ -796,7 +797,7 @@ public class ModelSettingFragment extends BaseLazyFragment {
                 FastClickCheckUtil.check(view);
                 loadingSearchRemoteTvDialog = new SearchRemoteTvDialog(mActivity);
                 EventBus.getDefault().register(loadingSearchRemoteTvDialog);
-                loadingSearchRemoteTvDialog.setTip("搜索附近TVBox");
+                loadingSearchRemoteTvDialog.setTip("鎼滅储闄勮繎TVBox");
                 loadingSearchRemoteTvDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                     @Override
                     public void onDismiss(DialogInterface dialogInterface) {
@@ -847,13 +848,13 @@ public class ModelSettingFragment extends BaseLazyFragment {
             }
         });
 
-        //下次进入
+        //涓嬫杩涘叆
         findViewById(R.id.tvHomeLive).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FastClickCheckUtil.check(v);
                 Hawk.put(HawkConfig.DEFAULT_LOAD_LIVE, !Hawk.get(HawkConfig.DEFAULT_LOAD_LIVE, false));
-                tvHomeDefaultShow.setText(Hawk.get(HawkConfig.DEFAULT_LOAD_LIVE, false) ? "直播" : "点播");
+                tvHomeDefaultShow.setText(Hawk.get(HawkConfig.DEFAULT_LOAD_LIVE, false) ? "鐩存挱" : "鐐规挱");
             }
         });
 
@@ -862,7 +863,7 @@ public class ModelSettingFragment extends BaseLazyFragment {
     }
 
     private void restartAppAfterConfigChanged() {
-        Toast.makeText(mContext, "配置已切换,即将自动重启应用!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(mContext, "閰嶇疆宸插垏鎹?鍗冲皢鑷姩閲嶅惎搴旂敤!", Toast.LENGTH_SHORT).show();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -872,7 +873,7 @@ public class ModelSettingFragment extends BaseLazyFragment {
     }
 
     private void restartAppAfterCacheCleared() {
-        Toast.makeText(mContext, "缓存已清空,即将重启到主页!", Toast.LENGTH_LONG).show();
+        Toast.makeText(mContext, "缂撳瓨宸叉竻绌?鍗冲皢閲嶅惎鍒颁富椤?", Toast.LENGTH_LONG).show();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -905,16 +906,16 @@ public class ModelSettingFragment extends BaseLazyFragment {
     private void refreshDanmuApiText() {
         if (tvDanmuApiText == null) return;
         if (DanmakuApi.isUseDefault()) {
-            tvDanmuApiText.setText("默认");
+            tvDanmuApiText.setText("榛樿");
             return;
         }
         String custom = Hawk.get(HawkConfig.DANMU_API, "");
         if (!custom.isEmpty()) {
-            tvDanmuApiText.setText("自定义");
+            tvDanmuApiText.setText("鑷畾涔?);
             return;
         }
         String config = ApiConfig.get().getDanmaku();
-        tvDanmuApiText.setText(config.isEmpty() ? "默认" : "接口");
+        tvDanmuApiText.setText(config.isEmpty() ? "榛樿" : "鎺ュ彛");
     }
 
     private void updateApiRowWeight(boolean showLine) {
@@ -944,20 +945,20 @@ public class ModelSettingFragment extends BaseLazyFragment {
     private void onClickIjkCachePlay(View v) {
         FastClickCheckUtil.check(v);
         Hawk.put(HawkConfig.IJK_CACHE_PLAY, !Hawk.get(HawkConfig.IJK_CACHE_PLAY, false));
-        tvIjkCachePlay.setText(Hawk.get(HawkConfig.IJK_CACHE_PLAY, false) ? "开启" : "关闭");
+        tvIjkCachePlay.setText(Hawk.get(HawkConfig.IJK_CACHE_PLAY, false) ? "寮€鍚? : "鍏抽棴");
     }
 
     private void openLocalConfig(boolean live) {
         selectLocalLive = live;
         if (!XXPermissions.isGranted(mContext, Permission.Group.STORAGE)) {
-            Toast.makeText(getContext(), "请选择文件前需要先授予存储权限", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "璇烽€夋嫨鏂囦欢鍓嶉渶瑕佸厛鎺堜簣瀛樺偍鏉冮檺", Toast.LENGTH_SHORT).show();
             XXPermissions.with(mActivity)
                     .permission(Permission.Group.STORAGE)
                     .request(new OnPermissionCallback() {
                         @Override
                         public void onGranted(List<String> permissions, boolean all) {
                             if (all) {
-                                Toast.makeText(getContext(), "已获得存储权限", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "宸茶幏寰楀瓨鍌ㄦ潈闄?, Toast.LENGTH_SHORT).show();
                                 openLocalFileActivity(selectLocalLive);
                             }
                         }
@@ -965,10 +966,10 @@ public class ModelSettingFragment extends BaseLazyFragment {
                         @Override
                         public void onDenied(List<String> permissions, boolean never) {
                             if (never) {
-                                Toast.makeText(getContext(), "获取存储权限失败,请在系统设置中开启", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "鑾峰彇瀛樺偍鏉冮檺澶辫触,璇峰湪绯荤粺璁剧疆涓紑鍚?, Toast.LENGTH_SHORT).show();
                                 XXPermissions.startPermissionActivity(mActivity, permissions);
                             } else {
-                                Toast.makeText(getContext(), "获取存储权限失败", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "鑾峰彇瀛樺偍鏉冮檺澶辫触", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
@@ -991,7 +992,7 @@ public class ModelSettingFragment extends BaseLazyFragment {
         }
         String api = localConfigToApi(data.getData());
         if (api == null || api.isEmpty()) {
-            Toast.makeText(getContext(), "读取本地配置失败", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "璇诲彇鏈湴閰嶇疆澶辫触", Toast.LENGTH_SHORT).show();
             return;
         }
         if (apiDialog != null) {
@@ -1133,19 +1134,19 @@ public class ModelSettingFragment extends BaseLazyFragment {
 
     String getHomeRecName(int type) {
         if (type == 1) {
-            return "站点推荐";
+            return "绔欑偣鎺ㄨ崘";
         } else if (type == 2) {
-            return "观看历史";
+            return "瑙傜湅鍘嗗彶";
         } else {
-            return "豆瓣热播";
+            return "璞嗙摚鐑挱";
         }
     }
 
     String getSearchView(int type) {
         if (type == 0) {
-            return "文字列表";
+            return "鏂囧瓧鍒楄〃";
         } else {
-            return "缩略图";
+            return "缂╃暐鍥?;
         }
     }
 }
