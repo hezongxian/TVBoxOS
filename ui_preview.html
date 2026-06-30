@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TVBox UI Layout Preview</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#1a1a2e;color:#fff;font-family:"Microsoft YaHei","PingFang SC",sans-serif}
+.tabs{display:flex;gap:4px;padding:12px 16px;background:#0f0f1a;flex-wrap:wrap;position:sticky;top:0;z-index:10}
+.tabs button{padding:8px 20px;border:none;border-radius:6px;cursor:pointer;font-size:14px;background:#2a2a3e;color:#aaa;transition:.2s}
+.tabs button:hover{background:#3a3a5e;color:#fff}
+.tabs button.active{background:#1890FF;color:#fff}
+.preview-wrap{display:flex;justify-content:center;padding:20px}
+.pv{display:none}
+.pv.active{display:block}
+.scene{width:1280px;min-width:1280px;height:720px;position:relative;overflow:hidden;background:#000;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+.info-panel{max-width:1280px;margin:0 auto 20px;padding:16px 20px;background:#111122;border-radius:8px;font-size:13px;color:#aaa;line-height:1.8}
+.info-panel b{color:#1890FF}
+.tag{display:inline-block;padding:1px 6px;margin:0 2px;background:#1890FF22;color:#1890FF;border-radius:3px;font-size:11px}
+</style>
+</head>
+<body>
+<div class="tabs">
+  <button class="active" onclick="switchTab(&apos;home&apos;)">Home</button>
+  <button onclick="switchTab(&apos;detail&apos;)">Detail</button>
+  <button onclick="switchTab(&apos;play&apos;)">Player</button>
+  <button onclick="switchTab(&apos;control&apos;)">Controls</button>
+  <button onclick="switchTab(&apos;setting&apos;)">Settings</button>
+</div>
+<div class="preview-wrap">
+  <div id="pv-home" class="pv active">
+    <div class="scene" style="background:linear-gradient(135deg,#0f0c29,#302b63,#24243e)">
+      <div style="display:flex;align-items:center;padding:8px 40px;height:50px">
+        <span style="font-size:22px;font-weight:bold">TVBox</span>
+        <span style="flex:1;text-align:right;font-size:18px;color:#ccc">2026/06/30  Tue  15:01</span>
+      </div>
+      <div style="display:flex;gap:12px;padding:6px 40px">
+        <span style="padding:8px 16px;border-radius:6px;font-size:17px;color:#fff;background:#1890FF;box-shadow:0 2px 12px #1890FF66">Recommend</span>
+        <span style="padding:8px 16px;border-radius:6px;font-size:17px;color:#bbf;background:#fff1">Movie</span>
+        <span style="padding:8px 16px;border-radius:6px;font-size:17px;color:#bbf;background:#fff1">TV</span>
+        <span style="padding:8px 16px;border-radius:6px;font-size:17px;color:#bbf;background:#fff1">Variety</span>
+        <span style="padding:8px 16px;border-radius:6px;font-size:17px;color:#bbf;background:#fff1">Anime</span>
+        <span style="padding:8px 16px;border-radius:6px;font-size:17px;color:#bbf;background:#fff1">Documentary</span>
+      </div>
+<div style="display:grid;grid-template-columns:repeat(5,214px);gap:10px;padding:10px 40px">
+        <div style="width:214px;height:280px;border-radius:6px;overflow:hidden;position:relative;background:linear-gradient(135deg,#667eea,#222)">
+          <div style="position:absolute;top:6px;left:6px;right:6px;display:flex;gap:4px">
+            <span style="padding:2px 6px;border-radius:3px;font-size:11px;color:#fff;background:#0008">2024</span>
+            <span style="padding:2px 6px;border-radius:3px;font-size:11px;color:#fff;background:#0008">CN</span>
+            <span style="padding:2px 6px;border-radius:3px;font-size:11px;color:#fff;background:#0008">ZH</span>
+          </div>
+          <div style="position:absolute;bottom:48px;left:6px;padding:2px 8px;border-radius:3px;font-size:11px;color:#ff0;background:#0008">HD</div>
+          <div style="position:absolute;bottom:24px;left:0;right:0;padding:4px 8px;font-size:14px;color:#fff;text-align:center;background:linear-gradient(transparent,#000a);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Movie Title 1</div>
+        </div>
+        <div style="width:214px;height:280px;border-radius:6px;overflow:hidden;position:relative;background:linear-gradient(135deg,#764ba2,#222)">
+          <div style="position:absolute;top:6px;left:6px;right:6px;display:flex;gap:4px">
+            <span style="padding:2px 6px;border-radius:3px;font-size:11px;color:#fff;background:#0008">2024</span>
+            <span style="padding:2px 6px;border-radius:3px;font-size:11px;color:#fff;background:#0008">CN</span>
+            <span style="padding:2px 6px;border-radius:3px;font-size:11px;color:#fff;background:#0008">ZH</span>
+          </div>
+          <div style="position:absolute;bottom:48px;left:6px;padding:2px 8px;border-radius:3px;font-size:11px;color:#ff0;background:#0008">HD</div>
+          <div style="position:absolute;bottom:24px;left:0;right:0;padding:4px 8px;font-size:14px;color:#fff;text-align:center;background:linear-gradient(transparent,#000a);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Movie Title 2</div>
+        </div>
+        <div style="width:214px;height:280px;border-radius:6px;overflow:hidden;position:relative;background:linear-gradient(135deg,#f093fb,#222)">
+          <div style="position:absolute;top:6px;left:6px;right:6px;display:flex;gap:4px">
+            <span style="padding:2px 6px;border-radius:3px;font-size:11px;color:#fff;background:#0008">2024</span>
+            <span style="padding:2px 6px;border-radius:3px;font-size:11px;color:#fff;background:#0008">CN</span>
+            <span style="padding:2px 6px;border-radius:3px;font-size:11px;color:#fff;background:#0008">ZH</span>
+          </div>
+          <div style="position:absolute;bottom:48px;left:6px;padding:2px 8px;border-radius:3px;font-size:11px;color:#ff0;background:#0008">HD</div>
+          <div style="position:absolute;bottom:24px;left:0;right:0;padding:4px 8px;font-size:14px;color:#fff;text-align:center;background:linear-gradient(transparent,#000a);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Movie Title 3</div>
+        </div>
+        <div style="width:214px;height:280px;border-radius:6px;overflow:hidden;position:relative;background:linear-gradient(135deg,#f5576c,#222)">
+          <div style="position:absolute;top:6px;left:6px;right:6px;display:flex;gap:4px">
+            <span style="padding:2px 6px;border-radius:3px;font-size:11px;color:#fff;background:#0008">2024</span>
+            <span style="padding:2px 6px;border-radius:3px;font-size:11px;color:#fff;background:#0008">CN</span>
+            <span style="padding:2px 6px;border-radius:3px;font-size:11px;color:#fff;background:#0008">ZH</span>
+          </div>
+          <div style="position:absolute;bottom:48px;left:6px;padding:2px 8px;border-radius:3px;font-size:11px;color:#ff0;background:#0008">HD</div>
+          <div style="position:absolute;bottom:24px;left:0;right:0;padding:4px 8px;font-size:14px;color:#fff;text-align:center;background:linear-gradient(transparent,#000a);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Movie Title 4</div>
+        </div>
+        <div style="width:214px;height:280px;border-radius:6px;overflow:hidden;position:relative;background:linear-gradient(135deg,#4facfe,#222)">
+          <div style="position:absolute;top:6px;left:6px;right:6px;display:flex;gap:4px">
+            <span style="padding:2px 6px;border-radius:3px;font-size:11px;color:#fff;background:#0008">2024</span>
+            <span style="padding:2px 6px;border-radius:3px;font-size:11px;color:#fff;background:#0008">CN</span>
+            <span style="padding:2px 6px;border-radius:3px;font-size:11px;color:#fff;background:#0008">ZH</span>
+          </div>
+          <div style="position:absolute;bottom:48px;left:6px;padding:2px 8px;border-radius:3px;font-size:11px;color:#ff0;background:#0008">HD</div>
+          <div style="position:absolute;bottom:24px;left:0;right:0;padding:4px 8px;font-size:14px;color:#fff;text-align:center;background:linear-gradient(transparent,#000a);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Movie Title 5</div>
+        </div>
+        <div style="width:214px;height:280px;border-radius:6px;overflow:hidden;position:relative;background:linear-gradient(135deg,#00f2fe,#222)">
+          <div style="position:absolute;top:6px;left:6px;right:6px;display:flex;gap:4px">
+            <span style="padding:2px 6px;border-radius:3px;font-size:11px;color:#fff;background:#0008">2024</span>
+            <span style="padding:2px 6px;border-radius:3px;font-size:11px;color:#fff;background:#0008">CN</span>
+            <span style="padding:2px 6px;border-radius:3px;font-size:11px;color:#fff;background:#0008">ZH</span>
+          </div>
+          <div style="position:absolute;bottom:48px;left:6px;padding:2px 8px;border-radius:3px;font-size:11px;color:#ff0;background:#0008">HD</div>
+          <div style="position:absolute;bottom:24px;left:0;right:0;padding:4px 8px;font-size:14px;color:#fff;text-align:center;background:linear-gradient(transparent,#000a);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Movie Title 6</div>
+        </div>
+        <div style="width:214px;height:280px;border-radius:6px;overflow:hidden;position:relative;background:linear-gradient(135deg,#43e97b,#222)">
+          <div style="position:absolute;top:6px;left:6px;right:6px;display:flex;gap:4px">
+            <span style="padding:2px 6px;border-radius:3px;font-size:11px;color:#fff;background:#0008">2024</span>
+            <span style="padding:2px 6px;border-radius:3px;font-size:11px;color:#fff;background:#0008">CN</span>
+            <span style="padding:2px 6px;border-radius:3px;font-size:11px;color:#fff;background:#0008">ZH</span>
+          </div>
+          <div style="position:absolute;bottom:48px;left:6px;padding:2px 8px;border-radius:3px;font-size:11px;color:#ff0;background:#0008">HD</div>
+          <div style="position:absolute;bottom:24px;left:0;right:0;padding:4px 8px;font-size:14px;color:#fff;text-align:center;background:linear-gradient(transparent,#000a);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Movie Title 7</div>
+        </div>
+        <div style="width:214px;height:280px;border-radius:6px;overflow:hidden;position:relative;background:linear-gradient(135deg,#38f9d7,#222)">
+          <div style="position:absolute;top:6px;left:6px;right:6px;display:flex;gap:4px">
+            <span style="padding:2px 6px;border-radius:3px;font-size:11px;color:#fff;background:#0008">2024</span>
+            <span style="padding:2px 6px;border-radius:3px;font-size:11px;color:#fff;background:#0008">CN</span>
+            <span style="padding:2px 6px;border-radius:3px;font-size:11px;color:#fff;background:#0008">ZH</span>
+          </div>
+          <div style="position:absolute;bottom:48px;left:6px;padding:2px 8px;border-radius:3px;font-size:11px;color:#ff0;background:#0008">HD</div>
+          <div style="position:absolute;bottom:24px;left:0;right:0;padding:4px 8px;font-size:14px;color:#fff;text-align:center;background:linear-gradient(transparent,#000a);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Movie Title 8</div>
+        </div>
+        <div style="width:214px;height:280px;border-radius:6px;overflow:hidden;position:relative;background:linear-gradient(135deg,#fa709a,#222)">
+          <div style="position:absolute;top:6px;left:6px;right:6px;display:flex;gap:4px">
+            <span style="padding:2px 6px;border-radius:3px;font-size:11px;color:#fff;background:#0008">2024</span>
+            <span style="padding:2px 6px;border-radius:3px;font-size:11px;color:#fff;background:#0008">CN</span>
+            <span style="padding:2px 6px;border-radius:3px;font-size:11px;color:#fff;background:#0008">ZH</span>
+          </div>
+          <div style="position:absolute;bottom:48px;left:6px;padding:2px 8px;border-radius:3px;font-size:11px;color:#ff0;background:#0008">HD</div>
+          <div style="position:absolute;bottom:24px;left:0;right:0;padding:4px 8px;font-size:14px;color:#fff;text-align:center;background:linear-gradient(transparent,#000a);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Movie Title 9</div>
+        </div>
+        <div style="width:214px;height:280px;border-radius:6px;overflow:hidden;position:relative;background:linear-gradient(135deg,#fee140,#222)">
+          <div style="position:absolute;top:6px;left:6px;right:6px;display:flex;gap:4px">
+            <span style="padding:2px 6px;border-radius:3px;font-size:11px;color:#fff;background:#0008">2024</span>
+            <span style="padding:2px 6px;border-radius:3px;font-size:11px;color:#fff;background:#0008">CN</span>
+            <span style="padding:2px 6px;border-radius:3px;font-size:11px;color:#fff;background:#0008">ZH</span>
+          </div>
+          <div style="position:absolute;bottom:48px;left:6px;padding:2px 8px;border-radius:3px;font-size:11px;color:#ff0;background:#0008">HD</div>
+          <div style="position:absolute;bottom:24px;left:0;right:0;padding:4px 8px;font-size:14px;color:#fff;text-align:center;background:linear-gradient(transparent,#000a);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Movie Title 10</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="pv-detail" class="pv">
+    <div class="scene" style="background:linear-gradient(180deg,#1a1030,#0a0a14)">
+      <div style="display:flex;padding:15px 30px;gap:20px">
+        <div style="width:480px;height:320px;background:#fff1;border-radius:8px;display:flex;align-items:center;justify-content:center">
+          <div style="width:230px;height:300px;background:linear-gradient(135deg,#667eea,#764ba2);border-radius:6px;display:flex;align-items:center;justify-content:center;color:#fffc;font-size:14px">Poster</div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;gap:8px">
+          <div style="font-size:20px;font-weight:bold">Joy of Life S2 (2024)</div>
+          <div style="display:flex;gap:12px">
+            <span style="padding:3px 8px;border-radius:4px;background:#fff1;font-size:14px;color:#bbb">CatVod</span>
+            <span style="padding:3px 8px;border-radius:4px;background:#fff1;font-size:14px;color:#bbb">2024</span>
+            <span style="padding:3px 8px;border-radius:4px;background:#fff1;font-size:14px;color:#bbb">China</span>
+            <span style="padding:3px 8px;border-radius:4px;background:#fff1;font-size:14px;color:#bbb">9.0</span>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <span style="padding:3px 10px;border-radius:4px;font-size:13px;background:#1890FF33;color:#1890FF">Drama</span>
+            <span style="padding:3px 10px;border-radius:4px;font-size:13px;background:#1890FF33;color:#1890FF">History</span>
+            <span style="padding:3px 10px;border-radius:4px;font-size:13px;background:#1890FF33;color:#1890FF">Fantasy</span>
+          </div>
+          <div style="font-size:14px;color:#999;line-height:1.6;overflow:hidden;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical">
+            Adapted from Mao Ni novel. Fan Xian navigates family, jianghu, and imperial court in this epic tale of power, loyalty, and intrigue...
+          </div>
+        </div>
+      </div>
+<div style="display:flex;gap:8px;padding:0 30px;margin-bottom:8px">
+        <span style="padding:6px 14px;border-radius:5px;font-size:13px;color:#fff;background:#1890FF">CatVod</span>
+        <span style="padding:6px 14px;border-radius:5px;font-size:13px;color:#bbb;background:#fff1">LZ Source</span>
+        <span style="padding:6px 14px;border-radius:5px;font-size:13px;color:#bbb;background:#fff1">WL Source</span>
+      </div>
+      <div style="display:flex;gap:8px;padding:0 30px;margin-bottom:8px;align-items:center">
+        <span style="padding:6px 12px;border-radius:5px;font-size:13px;color:#fff;background:#1890FF">Sort</span>
+        <span style="padding:5px 10px;border-radius:4px;font-size:12px;color:#fff;background:#1890FF88">1-6</span>
+        <span style="padding:5px 10px;border-radius:4px;font-size:12px;color:#aaa;background:#fff1">1-12</span>
+        <span style="padding:5px 10px;border-radius:4px;font-size:12px;color:#aaa;background:#fff1">1-18</span>
+        <span style="padding:5px 10px;border-radius:4px;font-size:12px;color:#aaa;background:#fff1">1-24</span>
+        <span style="padding:5px 10px;border-radius:4px;font-size:12px;color:#aaa;background:#fff1">1-30</span>
+        <span style="padding:5px 10px;border-radius:4px;font-size:12px;color:#aaa;background:#fff1">1-36</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(8,1fr);gap:8px;padding:0 30px">
+        <span style="padding:8px;text-align:center;border-radius:5px;font-size:13px;color:#fff;background:#1890FF">1</span>
+        <span style="padding:8px;text-align:center;border-radius:5px;font-size:13px;color:#ccc;background:#fff1">2</span>
+        <span style="padding:8px;text-align:center;border-radius:5px;font-size:13px;color:#ff0;background:#fff1;border:1px solid #ff0">3</span>
+        <span style="padding:8px;text-align:center;border-radius:5px;font-size:13px;color:#ccc;background:#fff1">4</span>
+        <span style="padding:8px;text-align:center;border-radius:5px;font-size:13px;color:#ccc;background:#fff1">5</span>
+        <span style="padding:8px;text-align:center;border-radius:5px;font-size:13px;color:#ccc;background:#fff1">6</span>
+        <span style="padding:8px;text-align:center;border-radius:5px;font-size:13px;color:#ccc;background:#fff1">7</span>
+        <span style="padding:8px;text-align:center;border-radius:5px;font-size:13px;color:#ccc;background:#fff1">8</span>
+        <span style="padding:8px;text-align:center;border-radius:5px;font-size:13px;color:#ccc;background:#fff1">9</span>
+        <span style="padding:8px;text-align:center;border-radius:5px;font-size:13px;color:#ccc;background:#fff1">10</span>
+        <span style="padding:8px;text-align:center;border-radius:5px;font-size:13px;color:#ccc;background:#fff1">11</span>
+        <span style="padding:8px;text-align:center;border-radius:5px;font-size:13px;color:#ccc;background:#fff1">12</span>
+        <span style="padding:8px;text-align:center;border-radius:5px;font-size:13px;color:#ccc;background:#fff1">13</span>
+        <span style="padding:8px;text-align:center;border-radius:5px;font-size:13px;color:#ccc;background:#fff1">14</span>
+        <span style="padding:8px;text-align:center;border-radius:5px;font-size:13px;color:#ccc;background:#fff1">15</span>
+        <span style="padding:8px;text-align:center;border-radius:5px;font-size:13px;color:#ccc;background:#fff1">16</span>
+        <span style="padding:8px;text-align:center;border-radius:5px;font-size:13px;color:#ccc;background:#fff1">17</span>
+        <span style="padding:8px;text-align:center;border-radius:5px;font-size:13px;color:#ccc;background:#fff1">18</span>
+        <span style="padding:8px;text-align:center;border-radius:5px;font-size:13px;color:#ccc;background:#fff1">19</span>
+        <span style="padding:8px;text-align:center;border-radius:5px;font-size:13px;color:#ccc;background:#fff1">20</span>
+        <span style="padding:8px;text-align:center;border-radius:5px;font-size:13px;color:#ccc;background:#fff1">21</span>
+        <span style="padding:8px;text-align:center;border-radius:5px;font-size:13px;color:#ccc;background:#fff1">22</span>
+        <span style="padding:8px;text-align:center;border-radius:5px;font-size:13px;color:#ccc;background:#fff1">23</span>
+        <span style="padding:8px;text-align:center;border-radius:5px;font-size:13px;color:#ccc;background:#fff1">24</span>
+        <span style="padding:8px;text-align:center;border-radius:5px;font-size:13px;color:#ccc;background:#fff1">25</span>
+        <span style="padding:8px;text-align:center;border-radius:5px;font-size:13px;color:#ccc;background:#fff1">26</span>
+        <span style="padding:8px;text-align:center;border-radius:5px;font-size:13px;color:#ccc;background:#fff1">27</span>
+        <span style="padding:8px;text-align:center;border-radius:5px;font-size:13px;color:#ccc;background:#fff1">28</span>
+        <span style="padding:8px;text-align:center;border-radius:5px;font-size:13px;color:#ccc;background:#fff1">29</span>
+        <span style="padding:8px;text-align:center;border-radius:5px;font-size:13px;color:#ccc;background:#fff1">30</span>
+        <span style="padding:8px;text-align:center;border-radius:5px;font-size:13px;color:#ccc;background:#fff1">31</span>
+        <span style="padding:8px;text-align:center;border-radius:5px;font-size:13px;color:#ccc;background:#fff1">32</span>
+        <span style="padding:8px;text-align:center;border-radius:5px;font-size:13px;color:#ccc;background:#fff1">33</span>
+        <span style="padding:8px;text-align:center;border-radius:5px;font-size:13px;color:#ccc;background:#fff1">34</span>
+        <span style="padding:8px;text-align:center;border-radius:5px;font-size:13px;color:#ccc;background:#fff1">35</span>
+        <span style="padding:8px;text-align:center;border-radius:5px;font-size:13px;color:#ccc;background:#fff1">36</span>
+      </div>
+    </div>
+  </div>
+  <div id="pv-play" class="pv">
+    <div class="scene">
+      <div style="width:100%;height:100%;background:linear-gradient(45deg,#0a0a0a,#1a1a2e,#0a0a14);display:flex;align-items:center;justify-content:center;position:relative">
+        <style>
+          @keyframes dm{from{transform:translateX(1280px)}to{transform:translateX(-100%)}}
+        </style>
+        <div style="position:absolute;top:60px;left:0;right:0;bottom:180px;pointer-events:none;overflow:hidden">
+          <span style="position:absolute;top:10%;white-space:nowrap;font-size:20px;color:#ff0;text-shadow:0 0 4px #000;animation:dm 8s linear infinite">HAHAHA LOL</span>
+          <span style="position:absolute;top:30%;white-space:nowrap;font-size:20px;color:#0ff;text-shadow:0 0 4px #000;animation:dm 8s linear infinite 3s">HIGH ENERGY!!!</span>
+          <span style="position:absolute;top:50%;white-space:nowrap;font-size:20px;color:#f0f;text-shadow:0 0 4px #000;animation:dm 8s linear infinite 5s">Check-in 2026</span>
+          <span style="position:absolute;top:70%;white-space:nowrap;font-size:20px;color:#0f0;text-shadow:0 0 4px #000;animation:dm 8s linear infinite 2s">666666</span>
+        </div>
+        <div style="font-size:80px;color:#fff3">Video Area</div>
+        <div style="position:absolute;bottom:100px;left:50%;transform:translateX(-50%);font-size:16px;color:#aaa;text-align:center">Danmaku layer on top<br>Loading animation when buffering</div>
+      </div>
+    </div>
+  </div>
+  <div id="pv-control" class="pv">
+    <div class="scene" style="background:linear-gradient(45deg,#111,#1a1a2e,#111)">
+      <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:60px;color:#fff2">Video</div>
+      <div style="position:absolute;top:5px;left:10px">
+        <div style="font-size:14px;color:#fff;padding:3px 6px;background:#0006;border-radius:3px;margin-bottom:2px">Joy of Life S2 - Ep03</div>
+        <div style="font-size:14px;color:#fff;padding:3px 6px;background:#0006;border-radius:3px">[ 1920 x 1080 ]</div>
+      </div>
+      <div style="position:absolute;top:5px;right:10px;display:flex;gap:8px">
+        <span style="font-size:14px;color:#fff;padding:3px 8px;background:#0006;border-radius:3px">1.2Gb/s</span>
+        <span style="font-size:14px;color:#fff;padding:3px 8px;background:#0006;border-radius:3px">00:12:34 | 00:45:20</span>
+        <span style="font-size:14px;color:#fff;padding:3px 8px;background:#0006;border-radius:3px">15:01</span>
+      </div>
+      <div style="position:absolute;bottom:70px;left:0;right:0;display:flex;gap:8px;padding:0 16px">
+        <span style="padding:8px 16px;border-radius:6px;font-size:15px;color:#fff;background:#1890FF">Next Ep</span>
+        <span style="padding:8px 16px;border-radius:6px;font-size:15px;color:#fff;background:#fff1">Prev Ep</span>
+        <span style="padding:8px 16px;border-radius:6px;font-size:15px;color:#fff;background:#fff1">x1.0</span>
+        <span style="padding:8px 16px;border-radius:6px;font-size:15px;color:#fff;background:#fff1">16:9</span>
+      </div>
+      <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,#000e);padding:12px 16px">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+          <span style="font-size:13px;color:#ccc;min-width:45px">00:12:34</span>
+          <div style="flex:1;height:4px;background:#fff3;border-radius:2px;position:relative">
+            <div style="width:35%;height:100%;background:#1890FF;border-radius:2px;position:relative"></div>
+            <div style="position:absolute;left:35%;top:-6px;width:16px;height:16px;background:#fff;border-radius:50%;margin-left:-8px"></div>
+          </div>
+          <span style="font-size:13px;color:#ccc;min-width:45px">00:45:20</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <span style="font-size:13px;color:#fff;padding:4px 8px;border-radius:4px;background:#fff1">Prev</span>
+          <span style="font-size:18px;padding:10px;background:#fff2;border-radius:50%">Prev</span>
+          <span style="font-size:22px;padding:14px;background:#1890FF;border-radius:50%">Play</span>
+          <span style="font-size:18px;padding:10px;background:#fff2;border-radius:50%">Next</span>
+          <span style="flex:1"></span>
+          <span style="font-size:13px;color:#fff;padding:4px 8px;border-radius:4px;background:#fff1">x1.0</span>
+          <span style="font-size:13px;color:#fff;padding:4px 8px;border-radius:4px;background:#fff1">16:9</span>
+          <span style="font-size:13px;color:#fff;padding:4px 8px;border-radius:4px;background:#fff1">Sub</span>
+          <span style="font-size:13px;color:#fff;padding:4px 8px;border-radius:4px;background:#fff1">Music</span>
+        </div>
+      </div>
+      <div style="position:absolute;top:50%;left:10px;transform:translateY(-50%);font-size:24px;color:#fff8;padding:10px">Prev</div>
+      <div style="position:absolute;top:50%;right:10px;transform:translateY(-50%);font-size:24px;color:#fff8;padding:10px">Unlocked</div>
+    </div>
+  </div>
+  <div id="pv-setting" class="pv">
+    <div class="scene" style="background:linear-gradient(180deg,#1a1030,#0a0a14);display:flex">
+      <div style="width:180px;background:#6632364E;padding:15px 8px;flex-shrink:0">
+        <div style="padding:10px 12px;border-radius:6px;font-size:15px;color:#fff;background:#1890FF;margin-bottom:4px;font-weight:bold">Settings</div>
+        <div style="padding:10px 12px;border-radius:6px;font-size:15px;color:#bbb;background:transparent;margin-bottom:4px;font-weight:normal">DataSource</div>
+        <div style="padding:10px 12px;border-radius:6px;font-size:15px;color:#bbb;background:transparent;margin-bottom:4px;font-weight:normal">Subscription</div>
+        <div style="padding:10px 12px;border-radius:6px;font-size:15px;color:#bbb;background:transparent;margin-bottom:4px;font-weight:normal">Display</div>
+        <div style="padding:10px 12px;border-radius:6px;font-size:15px;color:#bbb;background:transparent;margin-bottom:4px;font-weight:normal">Player</div>
+        <div style="padding:10px 12px;border-radius:6px;font-size:15px;color:#bbb;background:transparent;margin-bottom:4px;font-weight:normal">Live</div>
+        <div style="padding:10px 12px;border-radius:6px;font-size:15px;color:#bbb;background:transparent;margin-bottom:4px;font-weight:normal">Subtitles</div>
+        <div style="padding:10px 12px;border-radius:6px;font-size:15px;color:#bbb;background:transparent;margin-bottom:4px;font-weight:normal">About</div>
+      </div>
+      <div style="flex:1;padding:20px 30px">
+        <h3 style="font-size:18px;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid #fff1">Basic Settings</h3>
+        <div style="margin-bottom:20px">
+          <div style="font-size:14px;color:#aaa;margin-bottom:8px">UI</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#fff08;border-radius:6px;margin-bottom:6px"><span style="font-size:14px;color:#ddd">Home Source</span><span style="font-size:13px;color:#1890FF;cursor:pointer">Recommend</span></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#1890FF33;outline:1px solid #1890FF;border-radius:6px;margin-bottom:6px"><span style="font-size:14px;color:#ddd">Auto Search Device</span><span style="font-size:13px;color:#1890FF;cursor:pointer">On</span></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#fff08;border-radius:6px;margin-bottom:6px"><span style="font-size:14px;color:#ddd">Theme</span><span style="font-size:13px;color:#1890FF;cursor:pointer">Dark</span></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#fff08;border-radius:6px;margin-bottom:6px"><span style="font-size:14px;color:#ddd">Language</span><span style="font-size:13px;color:#1890FF;cursor:pointer">Chinese</span></div>
+        </div>
+        <div style="margin-bottom:20px">
+          <div style="font-size:14px;color:#aaa;margin-bottom:8px">Player</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#fff08;border-radius:6px;margin-bottom:6px"><span style="font-size:14px;color:#ddd">Default Player</span><span style="font-size:13px;color:#1890FF;cursor:pointer">IJK</span></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#fff08;border-radius:6px;margin-bottom:6px"><span style="font-size:14px;color:#ddd">Hardware Decode</span><span style="font-size:13px;color:#1890FF;cursor:pointer">System</span></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#fff08;border-radius:6px;margin-bottom:6px"><span style="font-size:14px;color:#ddd">Buffer Size</span><span style="font-size:13px;color:#1890FF;cursor:pointer">10MB</span></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#fff08;border-radius:6px;margin-bottom:6px"><span style="font-size:14px;color:#ddd">Danmaku</span><span style="font-size:13px;color:#1890FF;cursor:pointer">On</span></div>
+        </div>
+        <div style="margin-bottom:20px">
+          <div style="font-size:14px;color:#aaa;margin-bottom:8px">Data</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#fff08;border-radius:6px;margin-bottom:6px"><span style="font-size:14px;color:#ddd">Clear Cache</span><span style="font-size:13px;color:#1890FF;cursor:pointer">Clear</span></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#fff08;border-radius:6px;margin-bottom:6px"><span style="font-size:14px;color:#ddd">Backup Config</span><span style="font-size:13px;color:#1890FF;cursor:pointer">Export</span></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#fff08;border-radius:6px;margin-bottom:6px"><span style="font-size:14px;color:#ddd">Reset Default</span><span style="font-size:13px;color:#1890FF;cursor:pointer">Reset</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="info-panel">
+  <b>Design Base</b>: 1280x720dp Landscape &middot; Auto-scale library (<span class="tag">autosize</span>)<br>
+  <b>Dimension System</b>: <span class="tag">vs_50</span> = 50mm (view) &middot; <span class="tag">ts_30</span> = 30mm (text size)<br>
+  <b>Colors</b>: <span class="tag" style="background:#1890FF;color:#fff">#1890FF</span> focus highlight &middot;
+  <span class="tag" style="background:#BBFFFFFF;color:#000">#BBFFFFFF</span> secondary text &middot;
+  <span class="tag" style="background:#6632364E;color:#fff">#6632364E</span> sidebar bg<br>
+  <b>Source Files</b>: <span class="tag">app/src/main/res/layout/activity_*.xml</span> &middot;
+  <span class="tag">app/src/main/res/layout/player_vod_control_view.xml</span> &middot;
+  <span class="tag">app/src/main/res/layout/box_vod_control_view.xml</span>
+</div>
+<script>
+function switchTab(id) {
+  document.querySelectorAll('.pv').forEach(function(p){p.classList.remove('active')});
+  document.querySelectorAll('.tabs button').forEach(function(b,i){
+    var ids = ['home','detail','play','control','setting'];
+    b.classList.toggle('active', ids[i] === id);
+  });
+  document.getElementById('pv-'+id).classList.add('active');
+}
+</script>
+</body>
+</html>
