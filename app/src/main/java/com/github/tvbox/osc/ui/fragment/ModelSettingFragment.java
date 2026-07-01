@@ -152,7 +152,7 @@ public class ModelSettingFragment extends BaseLazyFragment {
         tvMediaCodec.setText(Hawk.get(HawkConfig.IJK_CODEC, "硬解码"));
         tvDebugOpen.setText(Hawk.get(HawkConfig.DEBUG_OPEN, false) ? "已打开" : "已关闭");
         tvParseWebView.setText(Hawk.get(HawkConfig.PARSE_WEBVIEW, true) ? "系统自带" : "XWalkView");
-        String defaultApi = "https://api.starlink.fan/api/c4kHF8.json";
+        String defaultApi = "http://124.223.214.31:55316/9981";
         tvApi.setText(Hawk.get(HawkConfig.API_URL, defaultApi));
         refreshApiLineText();
 
